@@ -5,7 +5,7 @@ import javax.persistence.GeneratedValue
 import javax.persistence.Id
 
 @Entity
-class Team(
+data class Team(
     @Id
     @GeneratedValue
     var id: Long,
