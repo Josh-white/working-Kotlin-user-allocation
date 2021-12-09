@@ -1,9 +1,28 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import {fireEvent, getByLabelText, render, screen} from "@testing-library/react";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
+describe('app', () => {
+  it('should have an input box to put new teams',  () => {
+    render(<App/>)
+
+    expect(screen.getByLabelText('enter team name')).toBeVisible()
+  });
+
+  it('should have a button to add team',  () => {
+    render(<App/>)
+
+    expect(screen.getByRole('button', {name: 'add team'}))
+  });
+
+  it('should display a team list',  () =>  {
+    render(<App/>)
+
+    fireEvent.change(screen.getByLabelText('enter team name'), {target: {value: 'GOAT Team'}})
+
+    fireEvent.click(screen.getByRole('button', {name: 'add team'}))
+
+    expect(screen.getByRole('heading', {name: 'List of Teams'}))
+    expect(screen.getAllByRole('listitem', {name: 'GOAT Team'}))
+  });
+})
