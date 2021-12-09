@@ -1,5 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import com.moowork.gradle.node.yarn.YarnTask
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.testing.logging.TestLogEvent
 
 plugins {
 	id("org.springframework.boot") version "2.6.1"
@@ -30,7 +32,7 @@ dependencies {
 	runtimeOnly("org.postgresql:postgresql")
 
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("io.mockk:mockk:1.3")
+	testImplementation("io.mockk:mockk:1.12.1")
 }
 
 tasks.withType<KotlinCompile> {
@@ -42,30 +44,34 @@ tasks.withType<KotlinCompile> {
 
 tasks.withType<Test> {
 	useJUnitPlatform()
+	testLogging {
+		exceptionFormat = TestExceptionFormat.FULL
+		events(TestLogEvent.PASSED, TestLogEvent.SKIPPED, TestLogEvent.FAILED)
+	}
 }
 
-node {
-	version = "16.13.1"
-	download = true
-}
-
-task("installDependencies", YarnTask::class) {
-	args = mutableListOf("install", "--network-timeout", "10000")
-	setExecOverrides(closureOf<ExecSpec> {
-		setWorkingDir("./src/ts")
-	})
-}
-
-task("buildWeb", YarnTask::class) {
-	args = mutableListOf("build")
-	setExecOverrides(closureOf<ExecSpec> {
-		setWorkingDir("./src/ts")
-	})
-}
-
-//project.tasks["testWeb"].dependsOn("installDependencies")
-project.tasks["buildWeb"].dependsOn("installDependencies")
-
-//project.tasks["test"].dependsOn("testWeb")
-project.tasks["bootRun"].dependsOn("buildWeb")
-project.tasks["bootJar"].dependsOn("buildWeb")
+//node {
+//	version = "16.13.1"
+//	download = true
+//}
+//
+//task("installDependencies", YarnTask::class) {
+//	args = mutableListOf("install", "--network-timeout", "10000")
+//	setExecOverrides(closureOf<ExecSpec> {
+//		setWorkingDir("./src/ts")
+//	})
+//}
+//
+//task("buildWeb", YarnTask::class) {
+//	args = mutableListOf("build")
+//	setExecOverrides(closureOf<ExecSpec> {
+//		setWorkingDir("./src/ts")
+//	})
+//}
+//
+////project.tasks["testWeb"].dependsOn("installDependencies")
+//project.tasks["buildWeb"].dependsOn("installDependencies")
+//
+////project.tasks["test"].dependsOn("testWeb")
+//project.tasks["bootRun"].dependsOn("buildWeb")
+//project.tasks["bootJar"].dependsOn("buildWeb")

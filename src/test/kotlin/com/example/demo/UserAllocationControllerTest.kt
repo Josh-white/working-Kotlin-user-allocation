@@ -5,6 +5,7 @@ import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.Test
 
+
 internal class UserAllocationControllerTest {
     private lateinit var mockUserAllocationService: UserAllocationService
     private lateinit var userAllocationController: UserAllocationController
@@ -16,6 +17,9 @@ internal class UserAllocationControllerTest {
             name = "GOAT Team"
         )
         mockUserAllocationService = mockk()
+        userAllocationController = UserAllocationController(mockUserAllocationService)
+
+
         every { mockUserAllocationService.saveTeam("GOAT Team") } returns team
 
         userAllocationController.createTeam("GOAT Team")
