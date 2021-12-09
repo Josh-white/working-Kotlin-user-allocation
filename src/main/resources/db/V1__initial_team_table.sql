@@ -1,5 +1,5 @@
 create table Team
 (
-    ID   int          not null,
+    ID   serial primary key,
     NAME varchar(100) not null
 );
