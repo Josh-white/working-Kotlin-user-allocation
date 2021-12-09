@@ -1,6 +1,6 @@
 import React from 'react';
 import {fireEvent, getByLabelText, render, screen} from "@testing-library/react";
-import App from "./App";
+import App from "../App";
 
 describe('app', () => {
   it('should have an input box to put new teams',  () => {
@@ -23,6 +23,6 @@ describe('app', () => {
     fireEvent.click(screen.getByRole('button', {name: 'add team'}))
 
     expect(screen.getByRole('heading', {name: 'List of Teams'}))
-    expect(screen.getAllByRole('listitem', {name: 'GOAT Team'}))
+    expect(screen.getByText('GOAT Team')).toBeVisible()
   });
 })

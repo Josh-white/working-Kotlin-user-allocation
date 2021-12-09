@@ -7,6 +7,8 @@ plugins {
 	id("com.github.node-gradle.node") version "2.2.0"
 	kotlin("jvm") version "1.6.0"
 	kotlin("plugin.spring") version "1.6.0"
+	kotlin("plugin.jpa") version "1.6.0"
+
 }
 
 group = "com.example"
@@ -19,6 +21,8 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web:2.6.1")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa:2.6.1")
+	implementation("org.flywaydb:flyway-core:8.1.0")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")

@@ -24,7 +24,7 @@ function App() {
       </header>
       <input aria-label={'enter team name'} placeholder={'enter team name'} onChange={handleUserInput}/>
       <button onClick={handleAddTeam}>
-        add Team
+        add team
       </button>
       <TeamList teamList={teamList}/>
     </div>
