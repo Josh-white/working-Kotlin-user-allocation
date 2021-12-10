@@ -26,4 +26,18 @@ internal class UserAllocationControllerTest {
 
         verify(exactly = 1) {mockUserAllocationService.saveTeam("GOAT Team")}
     }
+
+    @Test
+    fun `getTeams returns a list of teams` () {
+        mockUserAllocationService = mockk()
+        userAllocationController = UserAllocationController(mockUserAllocationService)
+
+        val listOfTeams = listOf(Team(id = 1, name = "Strykers"), Team(id = 2, name = "Cowboys"))
+
+        every { mockUserAllocationService.getTeams() } returns (listOfTeams)
+
+        userAllocationController.getTeams()
+
+        verify(exactly = 1) { mockUserAllocationService.getTeams() }
+    }
 }

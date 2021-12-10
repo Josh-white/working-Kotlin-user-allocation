@@ -8,7 +8,7 @@ import javax.persistence.Id
 data class Team(
     @Id
     @GeneratedValue
-    var id: Long,
+    var id: Long = 0,
     var name: String
 ) {
 
