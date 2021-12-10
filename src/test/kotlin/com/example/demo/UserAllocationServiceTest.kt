@@ -19,7 +19,10 @@ internal class UserAllocationServiceTest {
 
         every { mockTeamRepository.save(any()) } returns team
 
-        assertThat(userAllocationService.saveTeam("GOAT Team")).isEqualTo(team)
+        assertThat(userAllocationService.saveTeam(Team(
+            id = 1,
+            name = "GOAT Team"
+        ))).isEqualTo(team)
     }
 
     @Test

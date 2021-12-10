@@ -1,18 +1,21 @@
-import React from "react";
+import React, {useEffect} from "react";
+import {useTeam} from "../hooks/useTeam";
 
-export interface TeamListProps {
-  teamList: string[] | undefined
-}
-export const TeamList = ({teamList}: TeamListProps) => {
+export const TeamList = () => {
+  const {teams} = useTeam()
   const listOfTeams:React.ReactElement[] = []
 
-  if (teamList === undefined) {
+  useEffect(() => {
+
+  }, [teams])
+
+  if (teams === undefined) {
     return (<></>)
+
   }
 
-  //TODO change this key to use id once database is up and running
-  teamList.map((team, index) => {
-    listOfTeams.push(<li key={index}>{team}</li>)
+  teams.map((team) => {
+    listOfTeams.push(<li key={team.id}>{team.name}</li>)
   })
 
   return (

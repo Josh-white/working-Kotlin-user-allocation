@@ -50,28 +50,28 @@ tasks.withType<Test> {
 	}
 }
 
-//node {
-//	version = "16.13.1"
-//	download = true
-//}
-//
-//task("installDependencies", YarnTask::class) {
-//	args = mutableListOf("install", "--network-timeout", "10000")
-//	setExecOverrides(closureOf<ExecSpec> {
-//		setWorkingDir("./src/ts")
-//	})
-//}
-//
-//task("buildWeb", YarnTask::class) {
-//	args = mutableListOf("build")
-//	setExecOverrides(closureOf<ExecSpec> {
-//		setWorkingDir("./src/ts")
-//	})
-//}
-//
-////project.tasks["testWeb"].dependsOn("installDependencies")
-//project.tasks["buildWeb"].dependsOn("installDependencies")
-//
-////project.tasks["test"].dependsOn("testWeb")
-//project.tasks["bootRun"].dependsOn("buildWeb")
-//project.tasks["bootJar"].dependsOn("buildWeb")
+node {
+	version = "16.13.1"
+	download = true
+}
+
+task("installDependencies", YarnTask::class) {
+	args = mutableListOf("install", "--network-timeout", "10000")
+	setExecOverrides(closureOf<ExecSpec> {
+		setWorkingDir("./src/ts")
+	})
+}
+
+task("buildWeb", YarnTask::class) {
+	args = mutableListOf("build")
+	setExecOverrides(closureOf<ExecSpec> {
+		setWorkingDir("./src/ts")
+	})
+}
+
+//project.tasks["testWeb"].dependsOn("installDependencies")
+project.tasks["buildWeb"].dependsOn("installDependencies")
+
+//project.tasks["test"].dependsOn("testWeb")
+project.tasks["bootRun"].dependsOn("buildWeb")
+project.tasks["bootJar"].dependsOn("buildWeb")

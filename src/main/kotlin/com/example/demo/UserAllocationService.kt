@@ -4,11 +4,11 @@ import org.springframework.stereotype.Service
 
 @Service
 class UserAllocationService(var teamRepository: TeamRepository) {
-    fun saveTeam(teamName: String): Team {
-        val team = Team(
-            name = teamName
+    fun saveTeam(team: Team): Team {
+        val newTeam = Team(
+            name = team.name
         )
-        return teamRepository.save(team)
+        return teamRepository.save(newTeam)
     }
 
     fun getTeams(): List<Team> {
