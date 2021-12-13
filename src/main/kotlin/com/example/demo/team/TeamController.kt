@@ -1,17 +1,17 @@
-package com.example.demo
+package com.example.demo.team
 
 import org.springframework.web.bind.annotation.*
 
 @RestController
-class UserAllocationController(val userAllocationService: UserAllocationService)  {
+class TeamController(val teamService: TeamService)  {
 
     @PostMapping("/createTeam")
     fun createTeam(@RequestBody team: Team) {
-        userAllocationService.saveTeam(team)
+        teamService.saveTeam(team)
     }
 
     @GetMapping("/getTeams")
     fun getTeams(): List<Team> {
-        return userAllocationService.getTeams()
+        return teamService.getTeams()
     }
 }

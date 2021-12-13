@@ -1,12 +1,12 @@
-package com.example.demo
+package com.example.demo.team
 
 import org.springframework.stereotype.Service
 
 @Service
-class UserAllocationService(var teamRepository: TeamRepository) {
+class TeamService(var teamRepository: TeamRepository) {
     fun saveTeam(team: Team): Team {
         val newTeam = Team(
-            name = team.name
+            teamName = team.teamName
         )
         return teamRepository.save(newTeam)
     }
