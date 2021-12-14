@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service
 class TeamService(var teamRepository: TeamRepository) {
     fun saveTeam(team: Team): Team {
         val newTeam = Team(
-            teamName = team.teamName
+            name = team.name
         )
         return teamRepository.save(newTeam)
     }

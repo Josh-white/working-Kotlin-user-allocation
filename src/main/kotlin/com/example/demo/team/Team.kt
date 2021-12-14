@@ -9,8 +9,8 @@ import javax.persistence.Id
 data class Team(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var teamId: Long = 0,
-    var teamName: String = "Unallocated"
+    var id: Long = 0,
+    var name: String = "Unallocated"
 ) {
 
 

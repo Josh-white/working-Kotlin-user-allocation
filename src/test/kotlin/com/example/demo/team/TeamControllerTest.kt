@@ -1,4 +1,4 @@
-package com.example.demo
+package com.example.demo.team
 
 import com.example.demo.team.Team
 import com.example.demo.team.TeamController
@@ -16,13 +16,13 @@ internal class TeamControllerTest {
     @Test
     fun `createTeam sends information to service`() {
         val team = Team(
-            teamId = 1,
-            teamName = "GOAT Team"
+            id = 1,
+            name = "GOAT Team"
         )
         mockTeamService = mockk()
         teamController = TeamController(mockTeamService)
 
-        val requestedTeam = Team(teamName = "GOAT Team")
+        val requestedTeam = Team(name = "GOAT Team")
 
         every { mockTeamService.saveTeam(requestedTeam) } returns team
 
@@ -36,7 +36,7 @@ internal class TeamControllerTest {
         mockTeamService = mockk()
         teamController = TeamController(mockTeamService)
 
-        val listOfTeams = listOf(Team(teamId = 1, teamName = "Strykers"), Team(teamId = 2, teamName = "Cowboys"))
+        val listOfTeams = listOf(Team(id = 1, name = "Strykers"), Team(id = 2, name = "Cowboys"))
 
         every { mockTeamService.getTeams() } returns (listOfTeams)
 

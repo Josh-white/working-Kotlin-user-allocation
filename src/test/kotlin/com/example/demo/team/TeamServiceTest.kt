@@ -1,4 +1,4 @@
-package com.example.demo
+package com.example.demo.team
 
 import com.example.demo.team.Team
 import com.example.demo.team.TeamRepository
@@ -16,16 +16,16 @@ internal class TeamServiceTest {
         mockTeamRepository = mockk()
         teamService = TeamService(mockTeamRepository)
         val team = Team(
-            teamId = 1,
-            teamName = "GOAT Team"
+            id = 1,
+            name = "GOAT Team"
         )
 
         every { mockTeamRepository.save(any()) } returns team
 
         assertThat(teamService.saveTeam(
             Team(
-            teamId = 1,
-            teamName = "GOAT Team"
+            id = 1,
+            name = "GOAT Team"
         )
         )).isEqualTo(team)
     }
@@ -36,12 +36,12 @@ internal class TeamServiceTest {
         teamService = TeamService(mockTeamRepository)
         val teams = listOf(
             Team(
-                teamId = 1,
-                teamName = "GOAT Team"
+                id = 1,
+                name = "GOAT Team"
             ),
             Team(
-                teamId = 2,
-                teamName = "Strykers"
+                id = 2,
+                name = "Strykers"
             )
         )
 
