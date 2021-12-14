@@ -2,9 +2,10 @@ import React, {useState} from "react";
 import {TeamList} from "./TeamList";
 import {useTeam} from "../hooks/useTeam";
 
+
 export const Teams = () => {
 
-  const {addTeam} = useTeam()
+  const {addTeam, teams} = useTeam()
 
   const [teamName, setTeamName] = useState<string>('')
 
@@ -22,7 +23,7 @@ export const Teams = () => {
       <button onClick={() => handleAddTeam()}>
         add team
       </button>
-      <TeamList/>
+      <TeamList allTeams={teams}/>
     </>
 
   )

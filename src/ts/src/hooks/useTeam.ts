@@ -7,13 +7,14 @@ export interface Team {
 }
 
 export const useTeam = () => {
-  const [teams, setTeams] = useState<Team[]>([])
-  const [refreshTeams, setRefreshTeams] = useState([0])
+  const [teams, setTeams] = useState<Team[]>()
+  const [refreshTeams, setRefreshTeams] = useState<number[]>([0])
 
   useEffect(() => {
     const fetchData = async () => {
-      const results =  await getTeams()
-      setTeams(results)
+      await getTeams()
+        .then(setTeams)
+
 
       console.log("useEffect Called")
     }

@@ -1,20 +1,19 @@
-import React, {useEffect} from "react";
-import {useTeam} from "../hooks/useTeam";
+import React from "react";
+import {Team} from "../hooks/useTeam";
 
-export const TeamList = () => {
-  const {teams} = useTeam()
+interface TeamListProps {
+  allTeams: Team[] | undefined
+}
+
+export const TeamList = (props: TeamListProps) => {
   const listOfTeams:React.ReactElement[] = []
 
-  useEffect(() => {
-
-  }, [teams])
-
-  if (teams === undefined) {
+  if (props.allTeams === undefined) {
     return (<></>)
 
   }
 
-  teams.map((team) => {
+  props.allTeams.map((team) => {
     listOfTeams.push(<li key={team.id}>{team.name}</li>)
   })
 
