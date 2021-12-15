@@ -1,8 +1,5 @@
 package com.example.demo.team
 
-import com.example.demo.team.Team
-import com.example.demo.team.TeamRepository
-import com.example.demo.team.TeamService
 import io.mockk.every
 import io.mockk.mockk
 import org.assertj.core.api.Assertions.assertThat
@@ -15,19 +12,18 @@ internal class TeamServiceTest {
     fun `saveTeam saves the team to the database` () {
         mockTeamRepository = mockk()
         teamService = TeamService(mockTeamRepository)
-        val team = Team(
-            id = 1,
+        val teamToSave = Team(
+            id= 1,
             name = "GOAT Team"
         )
 
-        every { mockTeamRepository.save(any()) } returns team
+        every { mockTeamRepository.save(any()) } returns teamToSave
 
         assertThat(teamService.saveTeam(
             Team(
-            id = 1,
             name = "GOAT Team"
         )
-        )).isEqualTo(team)
+        )).isEqualTo(teamToSave)
     }
 
     @Test

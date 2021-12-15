@@ -12,5 +12,5 @@ data class People(
     var lastname: String,
 
     @ManyToOne
-    var teamId: Team
+    var teamId: Team = Team(name = "Unallocated")
 )

@@ -3,9 +3,13 @@ package com.example.demo.people
 import org.springframework.stereotype.Service
 
 @Service
-class PeopleService {
+class PeopleService(var peopleRepository: PeopleRepository) {
     fun getPeople(): List<People> {
-        TODO("Not yet implemented")
+        return peopleRepository.findAll()
+    }
+
+    fun createPerson(newPerson: People): People {
+        return peopleRepository.save(newPerson)
     }
 
 }

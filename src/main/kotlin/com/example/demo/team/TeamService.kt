@@ -5,10 +5,7 @@ import org.springframework.stereotype.Service
 @Service
 class TeamService(var teamRepository: TeamRepository) {
     fun saveTeam(team: Team): Team {
-        val newTeam = Team(
-            name = team.name
-        )
-        return teamRepository.save(newTeam)
+        return teamRepository.save(team)
     }
 
     fun getTeams(): List<Team> {
