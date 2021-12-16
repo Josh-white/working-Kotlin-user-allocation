@@ -11,7 +11,6 @@ export const TeamList = (props: TeamListProps) => {
 
   if (props.allTeams === undefined) {
     return (<></>)
-
   }
 
   props.allTeams.map((team) => {

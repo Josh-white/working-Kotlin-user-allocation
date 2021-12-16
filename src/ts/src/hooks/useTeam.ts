@@ -8,22 +8,16 @@ export interface Team {
 
 export const useTeam = () => {
   const [teams, setTeams] = useState<Team[]>()
-  const [refreshTeams, setRefreshTeams] = useState<number[]>([0])
+  const [refreshTeams, setRefreshTeams] = useState(0)
 
   useEffect(() => {
-    const fetchData = async () => {
-      await getTeams()
-        .then(setTeams)
+    getTeams().then(setTeams)
 
-
-      console.log("useEffect Called")
-    }
-    fetchData()
   }, [refreshTeams])
 
-  const addTeam = async (teamName: string)  => {
-    await createTeam(teamName)
-    setRefreshTeams(prevState => [...prevState, 1])
+  const addTeam =  (teamName: string)  => {
+    const savedTeam = createTeam(teamName)
+    setRefreshTeams(prevState => prevState + 1)
   }
 
   return {teams, addTeam}

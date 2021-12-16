@@ -1,5 +1,6 @@
 package com.example.demo.people
 
+import com.example.demo.team.Team
 import org.springframework.stereotype.Service
 
 @Service

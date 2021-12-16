@@ -9,8 +9,8 @@ data class People(
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Long = 0,
     var firstName: String,
-    var lastname: String,
+    var lastName: String,
 
     @ManyToOne
-    var teamId: Team = Team(name = "Unallocated")
+    var team: Team = Team(name = "Unallocated")
 )
