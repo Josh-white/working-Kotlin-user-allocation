@@ -1,18 +1,22 @@
 import React from 'react';
 import './App.css';
-import {Teams} from "./components/Teams";
-import {People} from "./components/People";
+import {CreateTeam} from "./components/CreateTeam";
+import {CreatePerson} from "./components/CreatePerson";
+import {TeamList} from "./components/TeamList";
+import {AllocationProvider} from "./provider/AllocationContextProvider";
 
 function App() {
 
   return (
-    <div className="App">
-      <div className="align-teams-container">
-        <People/>
-        <Teams/>
+    <AllocationProvider>
+      <div className="App">
+        <div className="align-teams-container">
+          <CreatePerson/>
+          <CreateTeam/>
+        </div>
+        <TeamList/>
       </div>
-
-    </div>
+    </AllocationProvider>
   );
 }
 

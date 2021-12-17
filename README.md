@@ -23,12 +23,12 @@ The Program Manager is the person accountable for allocating people to product t
 Your PM expects you to implement the user stories in this order and only work one story at a time. Your tech lead points you to the initial version that she created in GitHub.
 The user stories
 ##Product team list
-As a program manager, I want to be able to create teams and see them in a list of teams. It does not need to be easy to create teams because it doesn’t happen often and the team list does not need to be pretty. Teams are just the name of the team.
+As a program manager, I want to be able to create teams and see them in a list of teams. It does not need to be easy to create teams because it doesn’t happen often and the team list does not need to be pretty. CreateTeam are just the name of the team.
 
 ###Acceptance Criteria
 When I create a team
 Then I see the team name in the team list
-##New People
+##New CreatePerson
 As a program manager, I want to be able to add people to my organization and see them in a team named “Unallocated”. The other teams are not changed.
 
 ###Acceptance Criteria0

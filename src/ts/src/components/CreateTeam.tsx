@@ -1,11 +1,8 @@
 import React, {useState} from "react";
-import {TeamList} from "./TeamList";
-import {useTeam} from "../hooks/useTeam";
+import {useAllocation} from "../provider/AllocationContextProvider";
 
-
-export const Teams = () => {
-
-  const {addTeam, teams} = useTeam()
+export const CreateTeam = () => {
+  const {addTeam} = useAllocation()
   const [teamName, setTeamName] = useState<string>('')
 
   const handleAddTeam = async () => {
@@ -24,7 +21,6 @@ export const Teams = () => {
       <button onClick={() => handleAddTeam()}>
         add team
       </button>
-      <TeamList allTeams={teams}/>
     </div>
 
   )

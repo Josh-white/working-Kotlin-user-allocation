@@ -6,7 +6,7 @@ describe("PeopleList", () => {
   it('should have a title', () => {
     renderPeopleListWithPeople()
 
-    expect(screen.getAllByRole('heading', {name: 'List of People'}))
+    expect(screen.getAllByRole('heading', {name: 'List of CreatePerson'}))
     expect(screen.getAllByRole('listitem')).toHaveLength(3)
   });
 

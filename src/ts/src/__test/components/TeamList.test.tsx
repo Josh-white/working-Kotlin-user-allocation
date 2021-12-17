@@ -1,13 +1,13 @@
 import {render, screen} from "@testing-library/react";
 import {TeamList} from "../../components/TeamList";
-import {Teams} from "../../components/Teams";
+import {CreateTeam} from "../../components/CreateTeam";
 import {Team} from "../../hooks/useTeam";
 
 describe("TeamList", ()=> {
   it('should render page with teams', () => {
     renderTeamListWithTeams()
 
-    expect(screen.getAllByRole('heading', {name: 'List of Teams'}))
+    expect(screen.getAllByRole('heading', {name: 'List of CreateTeam'}))
     expect(screen.getAllByRole('listitem')).toHaveLength(3)
   });
 
@@ -18,7 +18,7 @@ describe("TeamList", ()=> {
       {id: 3, name: "final team"}]
 
     render(
-      <TeamList allTeams={listOfTeams}/>
+      <TeamList/>
     )
   }
 })

@@ -1,9 +1,14 @@
 .App {
   text-align: center;
-  background-color: lightblue;
 }
 
 .align-teams-container {
+  padding: 10px;
+  max-width: fit-content;
+  border: 1px solid black;
+  border-radius: 12px;
   display: flex;
+  flex-direction: column;
   gap: 20px;
+  align-items: flex-start;
 }

@@ -1,10 +1,8 @@
-import {PeopleList} from "./PeopleList";
-import {usePeople} from "../hooks/usePeople";
 import React, {useState} from "react";
+import {useAllocation} from "../provider/AllocationContextProvider";
 
-export const People = () => {
-  const {people, addPerson} = usePeople()
-
+export const CreatePerson = () => {
+  const {addPerson} = useAllocation()
   const [firstName, setFirstName] = useState<string>('')
   const [lastName, setLastName] = useState<string>('')
 
@@ -28,7 +26,7 @@ return (
     <input aria-label="enter first name" placeholder="enter first name" onChange={handleUserInputFirstName}/>
     <input aria-label="enter last name" placeholder="enter last name" onChange={handleUserInputLastName}/>
     <button onClick={() => handleAddPerson()}>add person</button>
-    <PeopleList allPeople={people}/>
+    {/*<PeopleList allPeople={people}/>*/}
   </div>
 )
 }
