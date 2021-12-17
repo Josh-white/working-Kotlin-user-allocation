@@ -31,12 +31,12 @@ describe("usePeople", () => {
 
 
     act(() => {
-      result.current.addPerson({first: "josh", last: "white"})
+      result.current.addPerson({firstName: "josh", lastName: "white"})
     })
 
     await waitForNextUpdate
 
-    expect(mockCreatePerson).toBeCalledWith({first: "josh", last: "white"})
+    expect(mockCreatePerson).toBeCalledWith({first: "josh", last: "white", team: {id: 1, name: "Unallocated"}})
     expect(result.current.people).toHaveLength(1)
 
   });

@@ -12,9 +12,9 @@ describe("PeopleList", () => {
 
   const renderPeopleListWithPeople = () => {
     const listOfPeople: Person[] = [
-      {id: 1, first: "josh", last: "white", team: {id: 1, name: "Goat Team"}},
-      {id: 2, first: "colton", last: "white", team: {id: 1, name: "Goat Team"}},
-      {id: 3, first: "easton", last: "white", team: {id: 1, name: "Goat Team"}}
+      {id: 1, firstName: "josh", lastName: "white", team: {id: 1, name: "Goat Team"}},
+      {id: 2, firstName: "colton", lastName: "white", team: {id: 1, name: "Goat Team"}},
+      {id: 3, firstName: "easton", lastName: "white", team: {id: 1, name: "Goat Team"}}
     ]
 
     render(<PeopleList allPeople={listOfPeople}/>)

@@ -26,10 +26,10 @@ describe('getPeople', () => {
 describe('createPerson', () =>{
   it('should save a person', async () => {
     const scope = nock('http://localhost')
-      .post('/createPerson', {firstName: "Josh", lastName: "White"} as NockBody)
+      .post('/createPerson', {firstName: "Josh", lastName: "White", team: {id:1, name: "Unallocated"}} as NockBody)
       .reply(200);
 
-    await expect(createPerson({first:"Josh",last: "White"})).resolves.not.toThrow();
+    await expect(createPerson({firstName:"Josh",lastName: "White"})).resolves.not.toThrow();
 
     expect(scope.isDone()).toBeTruthy();
   });

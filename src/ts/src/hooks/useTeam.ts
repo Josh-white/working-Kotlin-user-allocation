@@ -16,8 +16,9 @@ export const useTeam = () => {
   }, [refreshTeams])
 
   const addTeam =  (teamName: string)  => {
-    const savedTeam = createTeam(teamName)
-    setRefreshTeams(prevState => prevState + 1)
+    createTeam(teamName)
+      .then(() => setRefreshTeams(prevState => prevState + 1))
+
   }
 
   return {teams, addTeam}

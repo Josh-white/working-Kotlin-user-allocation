@@ -1,5 +1,6 @@
 import React from "react";
 import {Person} from "../hooks/usePeople";
+import "./PeopleList.css"
 
 interface PeopleListProps {
   allPeople: Person[] | undefined
@@ -13,7 +14,7 @@ export const PeopleList = (props: PeopleListProps) => {
   }
 
   props.allPeople.map((person) => {
-    listOfPeople.push(<li key={person.id} className="person">{`Name: ${person.first} ${person.last} Team: ${person.team?.name}`}</li>)
+    listOfPeople.push(<li key={person.id} className="person">{`Name: ${person.firstName} ${person.lastName} Team: ${person.team?.name}`}</li>)
   })
 
   return (

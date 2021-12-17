@@ -5,8 +5,8 @@ import {Team} from "./useTeam";
 //TODO Not sure about ID as optional have to think about it more.
 export interface Person {
   id?: number
-  first: string,
-  last: string,
+  firstName: string,
+  lastName: string,
   team?: Team
 }
 
@@ -20,9 +20,10 @@ export const usePeople = () => {
 
   }, [refreshPeople])
 
-  const addPerson =  ({first, last}: Person)  => {
-    const savedPerson = createPerson({first, last})
-    setRefreshPeople(prevState => prevState + 1)
+  const addPerson = ({firstName, lastName}: Person) => {
+    createPerson({firstName: firstName, lastName: lastName})
+      .then(() => setRefreshPeople(prevState => prevState + 1)
+      )
   }
   return {people, addPerson}
 }

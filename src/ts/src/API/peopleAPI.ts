@@ -5,8 +5,8 @@ export const getPeople = async () => {
   return (await axios.get('/getPeople')).data
 }
 
-export const createPerson = async ({first, last}: Person) => {
+export const createPerson = async ({firstName, lastName}: Person) => {
   await axios.post('/createPerson', {
-    firstName: first, lastName: last, team: {id: 1, name: "Unallocated"}
+    firstName: firstName, lastName: lastName, team: {id: 1, name: "Unallocated"}
   })
 }
