@@ -13,8 +13,9 @@ function App() {
         <div className="align-teams-container">
           <CreatePerson/>
           <CreateTeam/>
+          <TeamList/>
         </div>
-        <TeamList/>
+
       </div>
     </AllocationProvider>
   );

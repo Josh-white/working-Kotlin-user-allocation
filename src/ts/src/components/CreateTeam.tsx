@@ -22,6 +22,5 @@ export const CreateTeam = () => {
         add team
       </button>
     </div>
-
   )
 }
