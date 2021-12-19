@@ -7,7 +7,7 @@ export const PeopleList = ({firstName, lastName}: Person) => {
 
 
   return (
-    <>
-
-    </>)
+    <li className='person'>
+       {firstName}, {lastName}
+    </li>)
 }

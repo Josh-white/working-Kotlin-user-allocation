@@ -7,18 +7,19 @@ import {AllocationProvider} from "./provider/AllocationContextProvider";
 
 function App() {
 
-  return (
-    <AllocationProvider>
-      <div className="App">
-        <div className="align-teams-container">
-          <CreatePerson/>
-          <CreateTeam/>
-          <TeamList/>
-        </div>
-
-      </div>
-    </AllocationProvider>
-  );
+    return (
+        <AllocationProvider>
+            <div className="App">
+                <div className="align-teams-container">
+                    <CreatePerson/>
+                    <CreateTeam/>
+                </div>
+                <div>
+                    <TeamList/>
+                </div>
+            </div>
+        </AllocationProvider>
+    );
 }
 
 export default App;

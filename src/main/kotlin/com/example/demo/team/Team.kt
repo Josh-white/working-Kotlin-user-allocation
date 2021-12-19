@@ -10,11 +10,4 @@ data class Team(
     var id: Long = 0,
     var name: String = "Unallocated",
 
-//TODO maybe do this later.
-
-//    @OneToMany(cascade = [CascadeType.ALL], mappedBy = "team")
-//    var members: Set<People>?
-) {
-
-
-}
+)

@@ -4,7 +4,7 @@ create table Team
     name varchar(100) not null
 );
 
-create table CreatePerson
+create table People
 (
     id  serial primary key,
     first_name varchar(100) not null,
