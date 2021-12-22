@@ -11,7 +11,7 @@ export const TeamList = () => {
   }
 
   return (
-    <div>
+    <div className='team-card-container'>
       {teams.map(team => (
         <TeamCard id={team.id} name={team.name} key={team.id}/>
       ))}

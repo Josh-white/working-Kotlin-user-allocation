@@ -1,3 +1,7 @@
 .team {
     list-style-type: none;
 }
+
+.team-card-container {
+    display: flex;
+}

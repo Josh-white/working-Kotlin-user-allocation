@@ -5,9 +5,15 @@ import {Person} from "../hooks/usePeople";
 export const PeopleList = ({firstName, lastName}: Person) => {
 
 
+    function preventDefault(event: React.DragEvent<HTMLDivElement>) {
+        event.preventDefault()
+    }
 
-  return (
-    <li className='person'>
-       {firstName}, {lastName}
-    </li>)
+    return (
+        <div className='person'
+            draggable={"true"}
+            onDrag={(event) => preventDefault(event)}
+            onDragEnd={(event) => preventDefault(event)}>
+            {firstName}, {lastName}
+        </div>)
 }
