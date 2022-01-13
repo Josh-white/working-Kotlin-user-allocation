@@ -5,7 +5,7 @@ import './TeamCard.css'
 import React from "react";
 
 export const TeamCard = ({id, name}: Team) => {
-    const {people} = useAllocation()
+    const {people, addToTeam} = useAllocation()
 
     if (people === undefined) {
         return <></>
@@ -17,7 +17,11 @@ export const TeamCard = ({id, name}: Team) => {
 
     if (peopleInTeam.length === 0) {
         return (
-            <div className='team-card'>
+            <div className='team-card'
+                 onDrop={(event) => handleOnDrop(event)}
+                 onDragOver={(event) => preventDefault(event)}
+                 onDragEnter={(event) => preventDefault(event)}
+                 onDragLeave={(event) => preventDefault(event)}>
                 <h3>{name}</h3>
                 <span>This team has no members</span>
             </div>
@@ -25,9 +29,9 @@ export const TeamCard = ({id, name}: Team) => {
     }
 
     function handleOnDrop(event: React.DragEvent<HTMLDivElement>) {
-        // event.preventDefault()
-
-        alert("I handled the drop of a team member")
+        event.preventDefault()
+        const dataFromPerson = JSON.parse(event.dataTransfer.getData("personData"))
+        addToTeam(dataFromPerson.personId, id)
     }
 
     function preventDefault(event: React.DragEvent<HTMLDivElement>) {
@@ -42,12 +46,9 @@ export const TeamCard = ({id, name}: Team) => {
              onDragLeave={(event) => preventDefault(event)}>
             <h3>{name}</h3>
             {peopleInTeam.map(person => (
-                <PeopleList firstName={person.firstName} lastName={person.lastName} key={person.id}/>
+                <PeopleList firstName={person.firstName} lastName={person.lastName} key={person.id} id={person.id}/>
             ))}
         </div>
-
     )
-
-
 }
 

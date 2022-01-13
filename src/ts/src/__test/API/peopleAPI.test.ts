@@ -1,6 +1,6 @@
 import nock from "nock";
 import {NockBody} from "../testHelpers";
-import {createPerson, getPeople} from "../../API/peopleAPI";
+import {addPersonToTeam, createPerson, getPeople} from "../../API/peopleAPI";
 
 describe('getPeople', () => {
   it('should return a list of people from the backend.', async () => {
@@ -32,5 +32,18 @@ describe('createPerson', () =>{
     await expect(createPerson({firstName:"Josh",lastName: "White"})).resolves.not.toThrow();
 
     expect(scope.isDone()).toBeTruthy();
+  });
+})
+
+describe('addPersonToTeam', () => {
+  it('should send post request with person id and team id',  async () => {
+    const scope = nock('http://localhost')
+        .post('/addPersonToTeam', {personId: 1, teamId: 2} as NockBody)
+        .reply(200);
+
+    await expect(addPersonToTeam(1, 2)).resolves.not.toThrow()
+
+    expect(scope.isDone()).toBeTruthy();
+
   });
 })

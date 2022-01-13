@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {createPerson, getPeople} from "../API/peopleAPI";
+import {addPersonToTeam, createPerson, getPeople} from "../API/peopleAPI";
 import {Team} from "./useTeam";
 
 //TODO Not sure about ID as optional have to think about it more.
@@ -25,5 +25,10 @@ export const usePeople = () => {
       .then(() => setRefreshPeople(prevState => prevState + 1)
       )
   }
-  return {people, addPerson}
+
+  const addToTeam = (personId: number, teamId: number) => {
+    addPersonToTeam(personId, teamId)
+        .then(() => setRefreshPeople(prevState => prevState + 1))
+  }
+  return {people, addPerson, addToTeam}
 }
