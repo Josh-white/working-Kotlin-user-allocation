@@ -1,22 +1,10 @@
-import {render, screen} from "@testing-library/react";
 import {PeopleList} from "../../components/PeopleList";
-import {Person} from "../../hooks/usePeople";
+import {render, screen} from "@testing-library/react";
 
 describe("PeopleList", () => {
-  it('should have a title', () => {
-    renderPeopleListWithPeople()
+  it('should render a person first and last name', () => {
+    render(<PeopleList firstName={"Josh"} lastName={"White"}/>)
 
-    expect(screen.getAllByRole('heading', {name: 'List of CreatePerson'}))
-    expect(screen.getAllByRole('listitem')).toHaveLength(3)
+    expect(screen.getByText("Josh, White")).toBeVisible()
   });
-
-  const renderPeopleListWithPeople = () => {
-    const listOfPeople: Person[] = [
-      {id: 1, firstName: "josh", lastName: "white", team: {id: 1, name: "Goat Team"}},
-      {id: 2, firstName: "colton", lastName: "white", team: {id: 1, name: "Goat Team"}},
-      {id: 3, firstName: "easton", lastName: "white", team: {id: 1, name: "Goat Team"}}
-    ]
-
-    render(<PeopleList allPeople={listOfPeople}/>)
-  }
 })
